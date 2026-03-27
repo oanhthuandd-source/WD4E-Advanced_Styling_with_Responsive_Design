@@ -1,144 +1,47 @@
-
-body {
-    background-color: #dedede;
-}
-
-h1 {
-    text-align: center;
-    font-family:Arial, sans-serif;
-    font-size: 32px;
-}
-
-a {
-    color: #000;
-    text-decoration: none;
-    font-family:Arial, sans-serif;
-}
-
-p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
-}
-
-img{
-  width:100%;
-}
-
-
-p{
-  text-align:center;
-}
-
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
-}
-
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-main {
-    border: 5px #000 solid;
-    margin: 10px;
-}
- */
-/* 
-
+/* --- Mobile View (Default - Base Styles) --- */
+/* Single column layout */
 .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-}
- */
-/* img{
-    width: 200px;
-    height: 200px;
-    padding: 5px;
-} */
-
-/* .child {
-    position: relative;
-    display: inline-block;
-    border: 5px black solid;
-    margin: 5px;
-    border-radius: 5px;
-} */
-
-/* 
-
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.button {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 25px;
-}
- */
-/* 
-.button:hover {
-    background-color:#fff;
-} */
-
-/* 
-footer {
     display: flex;
-    justify-content: center;
-} */
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
 
-/* 
-header {
-    border-radius: 5px;
-    border: 5px #000 solid;
-    margin: 10px;
-} */
+div {
+    width: 100%;
+    margin-bottom: 20px;
+}
 
-/* 
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.child:hover .label {
-    display: block;
-} */
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* --- Query #1: Tablet View (772px) --- */
+@media screen and (min-width: 772px) {
+    .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Divs are 45% of viewport width */
+    div {
+        width: 45vw;
+    }
+
+    /* Images no more than 30% of viewport height */
+    img {
+        max-height: 30vh;
+        width: auto;
+        object-fit: cover;
+    }
+}
+
+/* --- Query #2: Large Screen View (998px) --- */
+@media screen and (min-width: 998px) {
+    /* Change layout so divs are 30% of viewport width */
+    div {
+        width: 30vw;
+    }
+}
