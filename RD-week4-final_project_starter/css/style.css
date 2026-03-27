@@ -1,143 +1,91 @@
+/* --- 1. MOBILE VIEW (Default - Requirement 4) --- */
+/* Mobile-first: No media query for mobile view */
 body {
-    background-color: #dedede;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
 }
 
-h1 {
-    text-align: center;
-    font-family:Arial, sans-serif;
-    font-size: 32px;
+img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
-
-a {
-    color: #000;
-    text-decoration: none;
-    font-family:Arial, sans-serif;
-}
-
-p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
-}
-
-img{
-  width:100%;
-}
-
-
-p{
-  text-align:center;
-}
-
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
-}
-
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-main {
-    border: 5px #000 solid;
-    margin: 10px;
-}
- */
-/* 
 
 .container {
     display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
+    grid-template-columns: 1fr; /* One column grid */
+    gap: 10px;                  /* 10px gap between rows/columns */
 }
- */
-/* img{
-    width: 200px;
-    height: 200px;
-    padding: 5px;
-} */
 
-/* .child {
-    position: relative;
-    display: inline-block;
-    border: 5px black solid;
-    margin: 5px;
-    border-radius: 5px;
-} */
-
-/* 
-
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.button {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 25px;
+figure {
+    margin: 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
 }
- */
-/* 
-.button:hover {
-    background-color:#fff;
-} */
 
-/* 
-footer {
-    display: flex;
-    justify-content: center;
-} */
+/* --- 2. TABLET VIEW (Requirement 5) --- */
+@media screen and (min-width: 772px) {
+    .container {
+        grid-template-columns: 1fr 1fr; /* Two column grid */
+    }
 
-/* 
-header {
-    border-radius: 5px;
-    border: 5px #000 solid;
-    margin: 10px;
-} */
+    figure {
+        /* Circular shape for figures */
+        border-radius: 50%;
+        overflow: hidden;
+        aspect-ratio: 1 / 1; /* Keeps it square so border-radius makes it a circle */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
-/* 
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.child:hover .label {
-    display: block;
-} */
+    /* Last figure takes up both columns */
+    figure:last-child {
+        grid-column: 1 / span 2;
+        border-radius: 0; /* Optional: adjust if circular look doesn't fit wide span */
+    }
+}
+
+/* --- 3. LARGE SCREEN VIEW (Requirement 6) --- */
+@media screen and (min-width: 992px) {
+    /* Every third figure takes up both columns */
+    figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+
+    figure {
+        border-radius: 0; /* Remove border radius */
+    }
+    
+    /* Note: We are NOT using max-width as per requirement 6.b.i */
+}
+
+/* --- 4. PREFERS-REDUCED-MOTION (Requirement 7) --- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* Remove scroll behavior */
+    }
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* --- 5. DARK COLOR SCHEME (Requirement 8) --- */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    figure {
+        background-color: #333333; /* Dark background color */
+        color: #FFFACD;            /* Lighter yellowish font color */
+        border: 2px solid black;   /* Black border color */
+    }
+}
