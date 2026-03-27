@@ -1,91 +1,33 @@
-/* --- 1. MOBILE VIEW (Default - Requirement 4) --- */
-/* Mobile-first: No media query for mobile view */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    line-height: 1.6;
-}
-
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .container {
     display: grid;
-    grid-template-columns: 1fr; /* One column grid */
-    gap: 10px;                  /* 10px gap between rows/columns */
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
-
 figure {
     margin: 0;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
-
-/* --- 2. TABLET VIEW (Requirement 5) --- */
+img {
+    width: 100%;
+    display: block;
+}
+/* --- TABLET VIEW --- */
 @media screen and (min-width: 772px) {
-    .container {
-        grid-template-columns: 1fr 1fr; /* Two column grid */
-    }
-
-    figure {
-        /* Circular shape for figures */
-        border-radius: 50%;
-        overflow: hidden;
-        aspect-ratio: 1 / 1; /* Keeps it square so border-radius makes it a circle */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    /* Last figure takes up both columns */
-    figure:last-child {
-        grid-column: 1 / span 2;
-        border-radius: 0; /* Optional: adjust if circular look doesn't fit wide span */
-    }
+    .container { grid-template-columns: 1fr 1fr; }
+    figure { border-radius: 50%; overflow: hidden; aspect-ratio: 1/1; }
+    figure:last-child { grid-column: span 2; }
 }
-
-/* --- 3. LARGE SCREEN VIEW (Requirement 6) --- */
+/* --- LARGE SCREEN --- */
 @media screen and (min-width: 992px) {
-    /* Every third figure takes up both columns */
-    figure:nth-child(3n) {
-        grid-column: span 2;
-    }
-
-    figure {
-        border-radius: 0; /* Remove border radius */
-    }
-    
-    /* Note: We are NOT using max-width as per requirement 6.b.i */
+    figure:nth-child(3n) { grid-column: span 2; }
+    figure { border-radius: 0; }
 }
-
-/* --- 4. PREFERS-REDUCED-MOTION (Requirement 7) --- */
+/* --- USER PREFERENCES --- */
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto; /* Remove scroll behavior */
-    }
-    * {
-        transition: none !important;
-        animation: none !important;
-    }
+    html { scroll-behavior: auto; }
 }
-
-/* --- 5. DARK COLOR SCHEME (Requirement 8) --- */
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #ffffff;
-    }
-
-    figure {
-        background-color: #333333; /* Dark background color */
-        color: #FFFACD;            /* Lighter yellowish font color */
-        border: 2px solid black;   /* Black border color */
-    }
+    body { background-color: #121212; color: white; }
+    figure { background-color: #333; color: #FFFACD; border: 2px solid black; }
 }
