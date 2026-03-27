@@ -1,33 +1,79 @@
+/* --- Requirement 4: Mobile View (Default) --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
 }
+
 figure {
     margin: 0;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 15px;
+    border: 1px solid #cccccc;
+    background-color: #f9f9f9;
 }
+
 img {
     width: 100%;
     display: block;
 }
-/* --- TABLET VIEW --- */
+
+/* --- Requirement 5: Tablet View (772px) --- */
 @media screen and (min-width: 772px) {
-    .container { grid-template-columns: 1fr 1fr; }
-    figure { border-radius: 50%; overflow: hidden; aspect-ratio: 1/1; }
-    figure:last-child { grid-column: span 2; }
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    figure {
+        border-radius: 50%;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    figure:last-child {
+        grid-column: 1 / span 2;
+    }
 }
-/* --- LARGE SCREEN --- */
+
+/* --- Requirement 6: Large Screen View (992px) --- */
 @media screen and (min-width: 992px) {
-    figure:nth-child(3n) { grid-column: span 2; }
-    figure { border-radius: 0; }
+    figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+
+    figure {
+        border-radius: 0;
+    }
 }
-/* --- USER PREFERENCES --- */
+
+/* --- Requirement 7: User Preferences (Motion) --- */
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+    html {
+        scroll-behavior: auto;
+    }
 }
+
+/* --- Requirement 8: User Preferences (Dark Mode) --- */
 @media (prefers-color-scheme: dark) {
-    body { background-color: #121212; color: white; }
-    figure { background-color: #333; color: #FFFACD; border: 2px solid black; }
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    figure {
+        background-color: #333333;
+        color: #FFFACD;
+        border: 2px solid #000000;
+    }
 }
