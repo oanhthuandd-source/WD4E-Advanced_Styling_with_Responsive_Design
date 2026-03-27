@@ -1,22 +1,23 @@
-/* --- Requirement 4: Mobile View (Default) --- */
+/* Requirement 4: Mobile View (Default - Mobile First) */
 body {
     margin: 0;
     padding: 20px;
     font-family: Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+    margin: 0 auto;
 }
 
 figure {
     margin: 0;
-    padding: 15px;
-    border: 1px solid #cccccc;
-    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
 }
 
 img {
@@ -24,7 +25,7 @@ img {
     display: block;
 }
 
-/* --- Requirement 5: Tablet View (772px) --- */
+/* Requirement 5: Tablet View (>= 772px) */
 @media screen and (min-width: 772px) {
     .container {
         grid-template-columns: 1fr 1fr;
@@ -33,7 +34,7 @@ img {
     figure {
         border-radius: 50%;
         overflow: hidden;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 1 / 1; /* Makes it a perfect circle */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -46,25 +47,26 @@ img {
     }
 }
 
-/* --- Requirement 6: Large Screen View (992px) --- */
+/* Requirement 6: Large Screen (>= 992px) */
 @media screen and (min-width: 992px) {
+    /* Rule 6.b.i: Note min-width is used, not max-width */
+    figure {
+        border-radius: 0; /* Remove border-radius */
+    }
+
     figure:nth-child(3n) {
         grid-column: span 2;
     }
-
-    figure {
-        border-radius: 0;
-    }
 }
 
-/* --- Requirement 7: User Preferences (Motion) --- */
+/* Requirement 7: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
     }
 }
 
-/* --- Requirement 8: User Preferences (Dark Mode) --- */
+/* Requirement 8: Dark Mode */
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
@@ -72,8 +74,8 @@ img {
     }
 
     figure {
-        background-color: #333333;
-        color: #FFFACD;
-        border: 2px solid #000000;
+        background-color: #333;
+        color: #FFFACD; /* Corrected to yellowish color per requirement 8b */
+        border: 2px solid #000; /* Requirement 8c: Black border */
     }
 }
